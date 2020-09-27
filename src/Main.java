@@ -10,25 +10,27 @@ public class Main {
 
         String[] words = value.split(" ");  // lay cac tu cach nhau bang dau phay.
         System.out.println(words.length);
-        int count = 1;
-        for (String w : words ) {
-//            Set<String> keySet = wordMap.keySet();
-            if (wordMap.isEmpty()) {
-                wordMap.put(w,count);
-            }else {
-                for (Map.Entry<String,Integer> entry : wordMap.entrySet()) {
-                    if (entry.getKey().equals(w)){
-                        wordMap.replace(w, entry.setValue(count++));
+
+
+
+        for (String w : words) {
+            if (wordMap.size() == 0) {
+                wordMap.put(w,1);
+            }
+            else {
+                for (Map.Entry<String, Integer> entry : wordMap.entrySet()) {
+
+                    if (w.equals(entry.getKey())) {
+                        int count = entry.getValue() + 1;
+                        entry.setValue(count);
                     }
-                    else {
-                        wordMap.put(w,count);
-                    }
+                    wordMap.put(w,1);
                 }
             }
 
-
-
         }
+
+        
         return wordMap;
     }
 
