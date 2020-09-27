@@ -9,25 +9,18 @@ public class Main {
         Map<String, Integer> wordMap = new TreeMap<>();
 
         String[] words = value.split(" ");  // lay cac tu cach nhau bang dau phay.
-        System.out.println(words.length);
+        System.out.println(words.length);    // Thử tính xem độ dài chuỗi là bao nhiêu
+
 
 
 
         for (String w : words) {
-            if (wordMap.size() == 0) {
+            if (wordMap.containsKey(w)) {
+                int count = wordMap.get(w) +1;
+                wordMap.put(w,count);
+            }else{
                 wordMap.put(w,1);
             }
-            else {
-                for (Map.Entry<String, Integer> entry : wordMap.entrySet()) {
-
-                    if (w.equals(entry.getKey())) {
-                        int count = entry.getValue() + 1;
-                        entry.setValue(count);
-                    }
-                    wordMap.put(w,1);
-                }
-            }
-
         }
 
         
